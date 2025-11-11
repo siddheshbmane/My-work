@@ -1,0 +1,407 @@
+/* Enhanced Theme CSS for Lead Analytics Dashboard */
+/* Combines mobile responsiveness + new design system */
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+
+/* Design System Variables */
+:root {
+  --background: oklch(0.9816 0.0017 247.8390);
+  --foreground: oklch(0.1649 0.0352 281.8285);
+  --card: oklch(1.0000 0 0);
+  --card-foreground: oklch(0.1649 0.0352 281.8285);
+  --popover: oklch(1.0000 0 0);
+  --popover-foreground: oklch(0.1649 0.0352 281.8285);
+  --primary: oklch(0.6726 0.2904 341.4084);
+  --primary-foreground: oklch(1.0000 0 0);
+  --secondary: oklch(0.9595 0.0200 286.0164);
+  --secondary-foreground: oklch(0.1649 0.0352 281.8285);
+  --muted: oklch(0.9595 0.0200 286.0164);
+  --muted-foreground: oklch(0.1649 0.0352 281.8285);
+  --accent: oklch(0.8903 0.1739 171.2690);
+  --accent-foreground: oklch(0.1649 0.0352 281.8285);
+  --destructive: oklch(0.6535 0.2348 34.0370);
+  --destructive-foreground: oklch(1.0000 0 0);
+  --border: oklch(0.9205 0.0086 225.0878);
+  --input: oklch(0.9205 0.0086 225.0878);
+  --ring: oklch(0.6726 0.2904 341.4084);
+  --chart-1: oklch(0.6726 0.2904 341.4084);
+  --chart-2: oklch(0.5488 0.2944 299.0954);
+  --chart-3: oklch(0.8442 0.1457 209.2851);
+  --chart-4: oklch(0.8903 0.1739 171.2690);
+  --chart-5: oklch(0.9168 0.1915 101.4070);
+  --sidebar: oklch(0.9595 0.0200 286.0164);
+  --sidebar-foreground: oklch(0.1649 0.0352 281.8285);
+  --sidebar-primary: oklch(0.6726 0.2904 341.4084);
+  --sidebar-primary-foreground: oklch(1.0000 0 0);
+  --sidebar-accent: oklch(0.8903 0.1739 171.2690);
+  --sidebar-accent-foreground: oklch(0.1649 0.0352 281.8285);
+  --sidebar-border: oklch(0.9205 0.0086 225.0878);
+  --sidebar-ring: oklch(0.6726 0.2904 341.4084);
+  --font-sans: Outfit, sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: 'Fira Code', monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
+  --shadow: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 1px 2px -3px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 2px 4px -3px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 4px 6px -3px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.10), 0px 8px 10px -3px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.25);
+}
+
+/* Base Styles */
+* {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--foreground);
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+/* Cards */
+.bg-white {
+  background-color: var(--card) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.kpi-card,
+.ad-card,
+.location-card,
+.client-card,
+.source-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.kpi-card:hover,
+.ad-card:hover,
+.location-card:hover,
+.client-card:hover,
+.source-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Primary Color Updates */
+.bg-purple-600,
+.text-purple-600,
+[class*="purple"] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.text-purple-600 {
+  color: var(--primary) !important;
+  background-color: transparent !important;
+}
+
+.border-purple-600 {
+  border-color: var(--primary) !important;
+}
+
+/* Buttons */
+button,
+.btn {
+  font-family: var(--font-sans);
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+button:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Inputs */
+input, select, textarea {
+  font-family: var(--font-sans);
+  border-radius: calc(var(--radius) - 2px);
+  border-color: var(--input);
+  background-color: var(--card);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px var(--ring) / 0.1;
+}
+
+/* Tables */
+table {
+  font-family: var(--font-sans);
+}
+
+table thead {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+}
+
+table tbody tr:hover {
+  background-color: var(--muted) / 0.5;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--sidebar);
+  color: var(--sidebar-foreground);
+  border-right: 1px solid var(--sidebar-border);
+}
+
+.nav-item {
+  color: var(--sidebar-foreground);
+  border-radius: calc(var(--radius) - 4px);
+  transition: all 0.2s;
+}
+
+.nav-item:hover {
+  background-color: var(--sidebar-accent) / 0.1;
+  border-left: 4px solid var(--sidebar-primary);
+}
+
+.nav-item.active {
+  background-color: var(--sidebar-accent) / 0.2;
+  border-left: 4px solid var(--sidebar-primary);
+  color: var(--sidebar-primary);
+}
+
+/* Charts */
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+
+/* Header */
+header {
+  background-color: var(--card);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Badges */
+.badge {
+  border-radius: calc(var(--radius) - 2px);
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* Shadows */
+.shadow-sm {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow {
+  box-shadow: var(--shadow) !important;
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md) !important;
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Border Radius */
+.rounded-lg {
+  border-radius: var(--radius) !important;
+}
+
+.rounded-md {
+  border-radius: calc(var(--radius) - 2px) !important;
+}
+
+.rounded-full {
+  border-radius: 9999px !important;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Mobile-first breakpoints */
+@media (max-width: 640px) {
+  /* Typography adjustments */
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1.125rem !important; }
+
+  /* Hide sidebar on mobile by default */
+  .sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    height: 100vh;
+    z-index: 60;
+    transition: left 0.3s;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* Header adjustments */
+  header {
+    padding: 0.75rem 1rem !important;
+  }
+
+  header h1 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Hide date inputs on mobile, show dropdown only */
+  header .flex.items-center.space-x-2:has(input[type="date"]) {
+    display: none !important;
+  }
+
+  /* Stack header buttons vertically */
+  header .flex.items-center.space-x-4 {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  /* KPI Cards - Single column */
+  .kpi-card {
+    margin-bottom: 1rem;
+  }
+
+  /* Charts - Reduce height on mobile */
+  .chart-container {
+    height: 250px !important;
+  }
+
+  /* Tables - Horizontal scroll */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    font-size: 0.75rem !important;
+  }
+
+  table th,
+  table td {
+    padding: 0.5rem !important;
+    white-space: nowrap;
+  }
+
+  /* Buttons - Full width or stacked */
+  button.px-4 {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Filter sections - Stack vertically */
+  .grid.grid-cols-1.md\\:grid-cols-3,
+  .grid.grid-cols-1.md\\:grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hide non-essential columns in tables */
+  table .hide-mobile {
+    display: none !important;
+  }
+
+  /* Compact padding */
+  .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .py-8 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  /* Source/Location cards - Single column */
+  .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Client comparison cards */
+  .grid.grid-cols-1.lg\\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Tablet adjustments (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .chart-container {
+    height: 280px !important;
+  }
+}
+
+/* Mobile sidebar overlay */
+@media (max-width: 640px) {
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 55;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+}
+
+/* Mobile-friendly touch targets */
+@media (max-width: 640px) {
+  button,
+  a,
+  select,
+  input {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Horizontal scroll indicator for tables */
+@media (max-width: 640px) {
+  .table-scroll-hint::after {
+    content: "← Scroll →";
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    padding: 0.5rem;
+    background: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
