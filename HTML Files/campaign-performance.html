@@ -7,19 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="enhanced-theme.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono&display=swap');
-        body { font-family: 'Roboto', 'Segoe UI', sans-serif; }
-        .font-mono { font-family: 'Roboto Mono', monospace; }
         .sidebar { width: 260px; }
-        
+
         .hierarchy-level-1 { padding-left: 0; background: white; }
         .hierarchy-level-2 { padding-left: 2rem; background: #F9FAFB; }
         .hierarchy-level-3 { padding-left: 4rem; background: #F3F4F6; }
-        
+
         .expandable-row { cursor: pointer; transition: all 0.2s; }
         .expandable-row:hover { background: #EEF2FF !important; }
-        
+
         .expand-icon { transition: transform 0.3s; }
         .expand-icon.rotated { transform: rotate(90deg); }
     </style>
