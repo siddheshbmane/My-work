@@ -1,0 +1,4 @@
+Date,Campaign Name,Campaign ID,Ad Group Name,Ad Group ID,Ad Name,Ad ID,Keyword,Location,Landing Page URL,Ad Type,Spend,Impressions,Clicks,Conversions,CTR,CPC,CPL
+2025-11-01,Campaign_Search_001,12345,AdGroup_A,67890,Ad_001,11111,manufacturing services,Mumbai,https://example.com/services,Search,5000,10000,500,25,5.0,10,200
+2025-11-02,Campaign_Search_001,12345,AdGroup_A,67890,Ad_001,11111,precision machining,Mumbai,https://example.com/services,Search,4800,9500,480,24,5.05,10,200
+2025-11-03,Campaign_YouTube_002,12346,AdGroup_B,67891,video_ad_001,11112,N/A,Mumbai,https://example.com/video,YouTube,3500,15000,420,18,2.8,8.33,194.44

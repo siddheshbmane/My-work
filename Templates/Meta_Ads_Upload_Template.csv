@@ -1,0 +1,4 @@
+Date,Campaign Name,Campaign ID,AdSet Name,AdSet ID,Ad Name,Ad ID,Form ID,Platform,Placement,Region,Landing Page URL,Creative Type,Spend,Impressions,Clicks,Conversions,CTR,CPC,CPL
+2025-11-01,Campaign_FB_001,23456,AdSet_B,78901,video_Ad_002,22222,form_123,Facebook,Feed,Maharashtra,https://example.com/services,Video,4500,12000,480,24,4.0,9.38,187.5
+2025-11-02,Campaign_FB_001,23456,AdSet_B,78901,static_Ad_003,22223,form_123,Facebook,Feed,Maharashtra,https://example.com/services,Static,4200,11500,450,22,3.91,9.33,190.91
+2025-11-03,Campaign_Insta_002,23457,AdSet_C,78902,carousel_Ad_004,22224,form_124,Instagram,Stories,Maharashtra,https://example.com/promo,Static,3800,18000,520,20,2.89,7.31,190
