@@ -1,5 +1,5 @@
 /* Enhanced Theme CSS for Lead Analytics Dashboard */
-/* Green-based design system with Plus Jakarta Sans and JetBrains Mono */
+/* Mobile-First Responsive Design with Green Color System */
 
 /* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Source+Serif+4:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -166,19 +166,75 @@
   --shadow-2xl: var(--shadow-2xl);
 }
 
-/* Base Styles */
+/* Base Styles - Mobile First */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   letter-spacing: var(--tracking-normal);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 600;
   line-height: 1.3;
+  margin: 0;
+}
+
+/* Mobile-first typography */
+h1 {
+  font-size: 1.5rem; /* 24px */
+}
+
+h2 {
+  font-size: 1.25rem; /* 20px */
+}
+
+h3 {
+  font-size: 1.125rem; /* 18px */
+}
+
+/* Tablet and up */
+@media (min-width: 640px) {
+  h1 {
+    font-size: 1.875rem; /* 30px */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  h3 {
+    font-size: 1.25rem; /* 20px */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.25rem; /* 36px */
+  }
+
+  h2 {
+    font-size: 1.875rem; /* 30px */
+  }
+
+  h3 {
+    font-size: 1.5rem; /* 24px */
+  }
 }
 
 .font-mono {
@@ -189,22 +245,39 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
 }
 
-/* Card Styles */
+/* Card Styles - Mobile First */
 .card {
   background-color: var(--card);
   color: var(--card-foreground);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+  padding: 1rem;
 }
 
-/* Button Styles */
+@media (min-width: 640px) {
+  .card {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+/* Button Styles - Mobile Optimized */
 .btn-primary {
   background-color: var(--primary);
   color: var(--primary-foreground);
   border-radius: var(--radius);
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1rem;
   font-weight: 500;
   transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  min-height: 44px; /* iOS touch target */
 }
 
 .btn-primary:hover {
@@ -212,18 +285,30 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+}
+
 .btn-secondary {
   background-color: var(--secondary);
   color: var(--secondary-foreground);
   border-radius: var(--radius);
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1rem;
   font-weight: 500;
   transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  min-height: 44px;
 }
 
 .btn-secondary:hover {
   opacity: 0.9;
   transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 /* Badge Styles */
@@ -235,6 +320,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.75rem;
   font-weight: 600;
   border-radius: calc(var(--radius) - 2px);
+  white-space: nowrap;
 }
 
 .badge-primary {
@@ -262,10 +348,75 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--destructive-foreground);
 }
 
+/* Sidebar Styles - Mobile First */
+.sidebar {
+  width: 100%;
+  position: fixed;
+  left: -100%;
+  top: 0;
+  bottom: 0;
+  background-color: var(--sidebar);
+  transition: left 0.3s ease-in-out;
+  z-index: 100;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .sidebar {
+    width: 260px;
+    left: 0;
+    top: 80px; /* Below header */
+    z-index: 40;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 280px;
+  }
+}
+
+/* Sidebar overlay for mobile */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
+
 /* Navigation Styles */
 .nav-item {
   transition: all 0.2s;
   border-radius: var(--radius);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-item:hover {
@@ -283,10 +434,44 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.9;
 }
 
-/* Table Styles */
+.sidebar-text {
+  display: inline;
+}
+
+/* Main Content - Mobile First */
+#mainContent {
+  margin-left: 0;
+  padding: 1rem;
+  width: 100%;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+@media (min-width: 640px) {
+  #mainContent {
+    margin-left: 260px;
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #mainContent {
+    margin-left: 280px;
+    padding: 2rem;
+  }
+}
+
+/* Table Styles - Mobile Responsive */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px; /* Ensures horizontal scroll on mobile */
 }
 
 table thead {
@@ -294,25 +479,42 @@ table thead {
 }
 
 table th {
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem;
   text-align: left;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted-foreground);
+  white-space: nowrap;
 }
 
 table td {
-  padding: 1rem 1.5rem;
+  padding: 0.75rem;
   border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
 }
 
 table tbody tr:hover {
   background-color: rgba(52, 168, 90, 0.05);
 }
 
-/* Form Styles */
+@media (min-width: 640px) {
+  table th,
+  table td {
+    padding: 1rem 1.5rem;
+  }
+
+  table th {
+    font-size: 0.875rem;
+  }
+
+  table td {
+    font-size: 1rem;
+  }
+}
+
+/* Form Styles - Mobile Optimized */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -322,13 +524,17 @@ input[type="time"],
 textarea,
 select {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  font-size: 1rem;
   transition: all 0.2s;
+  min-height: 44px; /* iOS touch target */
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 input:focus,
@@ -337,6 +543,95 @@ select:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(52, 168, 90, 0.1);
+}
+
+/* Chart Styles - Mobile Responsive */
+.chart-container {
+  position: relative;
+  height: 250px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+@media (min-width: 640px) {
+  .chart-container {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .chart-container {
+    height: 350px;
+  }
+}
+
+/* Header Styles - Mobile First */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+}
+
+@media (min-width: 640px) {
+  header {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--foreground);
+}
+
+@media (min-width: 640px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+/* Hide on Mobile Utility */
+.hide-mobile {
+  display: none !important;
+}
+
+@media (min-width: 640px) {
+  .hide-mobile {
+    display: block !important;
+  }
+
+  .hide-mobile.flex {
+    display: flex !important;
+  }
+
+  .hide-mobile.inline-flex {
+    display: inline-flex !important;
+  }
+
+  .hide-mobile.grid {
+    display: grid !important;
+  }
+}
+
+/* Show only on Mobile */
+.show-mobile {
+  display: block !important;
+}
+
+@media (min-width: 640px) {
+  .show-mobile {
+    display: none !important;
+  }
 }
 
 /* Shadow Utilities */
@@ -370,89 +665,6 @@ select:focus {
 
 .shadow-2xl {
   box-shadow: var(--shadow-2xl);
-}
-
-/* Chart Styles */
-.chart-container {
-  position: relative;
-  height: 300px;
-  width: 100%;
-}
-
-/* Responsive Design */
-
-/* Mobile devices (portrait phones, less than 640px) */
-@media (max-width: 639px) {
-  .sidebar {
-    width: 100%;
-    position: fixed;
-    left: -100%;
-    transition: left 0.3s;
-    z-index: 40;
-  }
-
-  .sidebar.active {
-    left: 0;
-  }
-
-  #mainContent {
-    margin-left: 0 !important;
-  }
-
-  .card {
-    padding: 1rem;
-  }
-
-  table {
-    font-size: 0.875rem;
-  }
-
-  table th,
-  table td {
-    padding: 0.5rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
-  h3 {
-    font-size: 1.125rem;
-  }
-}
-
-/* Tablets (640px - 1023px) */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .sidebar {
-    width: 200px;
-  }
-
-  #mainContent {
-    margin-left: 200px;
-  }
-
-  .card {
-    padding: 1.25rem;
-  }
-}
-
-/* Desktops (1024px and up) */
-@media (min-width: 1024px) {
-  .sidebar {
-    width: 260px;
-  }
-
-  #mainContent {
-    margin-left: 260px;
-  }
-
-  .card {
-    padding: 1.5rem;
-  }
 }
 
 /* Utility Classes */
@@ -525,6 +737,7 @@ select:focus {
   width: 40px;
   height: 40px;
   animation: spin 1s linear infinite;
+  margin: 2rem auto;
 }
 
 @keyframes spin {
@@ -552,20 +765,105 @@ select:focus {
   background: #2d8e4a;
 }
 
+/* Mobile-specific improvements */
+@media (max-width: 639px) {
+  /* Reduce padding for mobile */
+  .px-4 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .py-4 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  /* Stack flex items on mobile */
+  .flex.items-center.gap-4,
+  .flex.items-center.space-x-4 {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Full width buttons on mobile */
+  button,
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Adjust font sizes for mobile */
+  .text-2xl {
+    font-size: 1.25rem !important;
+  }
+
+  .text-xl {
+    font-size: 1.125rem !important;
+  }
+
+  /* Cards take full width on mobile */
+  .grid > div {
+    width: 100%;
+  }
+}
+
 /* Print Styles */
 @media print {
   .sidebar,
   .nav-item,
   button,
-  .no-print {
+  .no-print,
+  .mobile-menu-btn,
+  .sidebar-overlay {
     display: none !important;
   }
 
   #mainContent {
     margin-left: 0 !important;
+    padding: 0 !important;
   }
 
   .card {
     break-inside: avoid;
+    page-break-inside: avoid;
   }
+
+  header {
+    position: relative;
+  }
+}
+
+/* Touch improvements for iOS/Android */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  input,
+  select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .nav-item {
+    padding: 0.875rem 1rem !important;
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
