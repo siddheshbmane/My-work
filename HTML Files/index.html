@@ -27,38 +27,12 @@
 
     <!-- Header -->
     <header class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
-        <div class="flex items-center justify-between px-6 py-4">
+        <div class="flex items-center justify-between px-6 py-3">
             <div class="flex items-center space-x-4">
                 <button id="sidebarToggle" class="text-gray-600 hover:text-gray-900">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
                 <h1 class="text-2xl font-bold text-purple-600">Olio Global AdTech</h1>
-            </div>
-
-            <!-- Date Range Filter -->
-            <div class="flex items-center space-x-4">
-                <div class="flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-lg">
-                    <i class="fas fa-calendar text-purple-600"></i>
-                    <select id="dateRangeQuick" class="bg-transparent outline-none text-sm font-medium">
-                        <option value="today">Today</option>
-                        <option value="yesterday">Yesterday</option>
-                        <option value="7days">Last 7 Days</option>
-                        <option value="30days" selected>Last 30 Days</option>
-                        <option value="thismonth">This Month</option>
-                        <option value="lastmonth">Last Month</option>
-                        <option value="custom">Custom Range</option>
-                    </select>
-                </div>
-
-                <div class="flex items-center space-x-2">
-                    <input type="date" id="dateFrom" class="px-3 py-2 border rounded-lg text-sm" value="2025-10-12">
-                    <span class="text-gray-500">to</span>
-                    <input type="date" id="dateTo" class="px-3 py-2 border rounded-lg text-sm" value="2025-11-11">
-                </div>
-
-                <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
-                    <i class="fas fa-sync-alt mr-2"></i>Refresh
-                </button>
             </div>
 
             <div class="flex items-center space-x-4">
@@ -76,10 +50,10 @@
     </header>
 
     <!-- Main Container -->
-    <div class="flex pt-20">
+    <div class="flex pt-18">
 
         <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar bg-white shadow-lg fixed left-0 top-20 bottom-0 overflow-y-auto">
+        <aside id="sidebar" class="sidebar bg-white shadow-lg fixed left-0 top-18 bottom-0 overflow-y-auto">
             <nav class="py-4">
                 <!-- Dashboard -->
                 <div class="px-4 mb-2">
@@ -765,5 +739,51 @@
             }
         });
     </script>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Mobile Sidebar Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                    sidebarOverlay.classList.toggle('active');
+                });
+            }
+
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', function() {
+                    sidebar.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+                });
+            }
+
+            // Close sidebar when clicking nav links on mobile
+            const navLinks = sidebar.querySelectorAll('.nav-item');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 640) {
+                        sidebar.classList.remove('active');
+                        sidebarOverlay.classList.remove('active');
+                    }
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 640) {
+                    sidebar.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
