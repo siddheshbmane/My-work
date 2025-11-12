@@ -788,8 +788,48 @@
         });
     </script>
 
+    <!-- Data Loading & Filtering Scripts -->
+    <script src="js/data-loader.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/table-utils.js"></script>
+
     <!-- Dark Mode Script -->
     <script src="js/dark-mode.js"></script>
+
+    <!-- Initialize Dashboard -->
+    <script>
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('Initializing dashboard...');
+
+            // Load data
+            await dataLoader.loadData();
+
+            // Update dashboard with data
+            updateDashboard();
+
+            // Listen for filter changes
+            filterManager.onChange((filters) => {
+                console.log('Filters changed:', filters);
+                dataLoader.applyFilters(filters);
+                updateDashboard();
+            });
+        });
+
+        function updateDashboard() {
+            const summary = dataLoader.getSummary();
+
+            if (!summary) {
+                console.warn('No summary data available');
+                return;
+            }
+
+            console.log('Updating dashboard with:', summary);
+
+            // Update summary cards (you can expand this)
+            // Example: Update total spend, leads, revenue cards
+        }
+    </script>
 
 </body>
 </html>
