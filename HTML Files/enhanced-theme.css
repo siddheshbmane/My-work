@@ -8,7 +8,7 @@
 /* DESIGN SYSTEM VARIABLES */
 /* ============================================ */
 :root {
-  /* Colors */
+  /* Light Mode Colors */
   --background: #f9f9fa;
   --foreground: #333333;
   --card: #ffffff;
@@ -23,6 +23,10 @@
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: #d4d4d4;
+  --input-bg: #ffffff;
+  --table-header-bg: #f9fafb;
+  --table-border: #e5e7eb;
+  --table-hover: #f9fafb;
 
   /* Fonts */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -39,6 +43,50 @@
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================ */
+/* DARK MODE VARIABLES */
+/* ============================================ */
+.dark {
+  /* Dark Mode Colors */
+  --background: #0f1419;
+  --foreground: #e5e7eb;
+  --card: #1a1f2e;
+  --card-foreground: #e5e7eb;
+  --primary: #34a85a;
+  --primary-foreground: #ffffff;
+  --secondary: #4682b4;
+  --secondary-foreground: #e5e7eb;
+  --muted: #374151;
+  --muted-foreground: #9ca3af;
+  --accent: #6495ed;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #374151;
+  --input-bg: #1f2937;
+  --table-header-bg: #1f2937;
+  --table-border: #374151;
+  --table-hover: #1f2937;
+
+  /* Dark Mode Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth transition when switching themes */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body,
+.sidebar,
+header,
+.card,
+.bg-white {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ============================================ */
@@ -103,17 +151,43 @@ h4 { font-size: 1rem; }        /* 16px */
 /* ============================================ */
 header {
   height: var(--header-height);
-  background-color: #ffffff;
+  background-color: var(--card);
+  color: var(--card-foreground);
   box-shadow: var(--shadow-sm);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
+  border-bottom: 1px solid var(--border);
 }
 
 header .flex {
   height: 100%;
+}
+
+/* Dark mode toggle button */
+#darkModeToggle {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--foreground);
+  font-size: 1.125rem;
+}
+
+#darkModeToggle:hover {
+  background-color: var(--muted);
+}
+
+#darkModeToggle:active {
+  transform: scale(0.95);
 }
 
 /* ============================================ */
@@ -126,13 +200,15 @@ header .flex {
   bottom: 0;
   width: 85%;
   max-width: 320px;
-  background-color: #ffffff;
+  background-color: var(--card);
+  color: var(--card-foreground);
   z-index: 100;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-lg);
+  border-right: 1px solid var(--border);
 }
 
 .sidebar.active {
@@ -322,7 +398,7 @@ select {
   padding: 0.625rem 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background-color: #ffffff;
+  background-color: var(--input-bg);
   color: var(--foreground);
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -368,7 +444,7 @@ table {
 }
 
 table thead {
-  background-color: #f9fafb;
+  background-color: var(--table-header-bg);
   border-bottom: 2px solid var(--border);
 }
 
@@ -379,17 +455,18 @@ table th {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #6b7280;
+  color: var(--muted-foreground);
   white-space: nowrap;
 }
 
 table td {
   padding: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--foreground);
 }
 
 table tbody tr:hover {
-  background-color: #f9fafb;
+  background-color: var(--table-hover);
 }
 
 @media (min-width: 768px) {
