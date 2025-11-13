@@ -861,10 +861,27 @@
             const sidebarToggle = document.getElementById('sidebarToggle');
             const sidebarOverlay = document.getElementById('sidebarOverlay');
 
+            const mainContent = document.querySelector('main.flex-1') || document.getElementById('mainContent');
+
             if (sidebarToggle && sidebar) {
                 sidebarToggle.addEventListener('click', function() {
-                    sidebar.classList.toggle('active');
-                    sidebarOverlay.classList.toggle('active');
+                    // On mobile: toggle slide in/out
+                    if (window.innerWidth < 768) {
+                        sidebar.classList.toggle('active');
+                        sidebarOverlay.classList.toggle('active');
+                    } else {
+                        // On desktop: toggle collapsed state
+                        sidebar.classList.toggle('collapsed');
+
+                        // Adjust main content margin
+                        if (mainContent) {
+                            if (sidebar.classList.contains('collapsed')) {
+                                mainContent.style.marginLeft = '70px';
+                            } else {
+                                mainContent.style.marginLeft = '260px';
+                            }
+                        }
+                    }
                 });
             }
 
@@ -879,7 +896,7 @@
             const navLinks = sidebar.querySelectorAll('.nav-item');
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    if (window.innerWidth < 640) {
+                    if (window.innerWidth < 768) {
                         sidebar.classList.remove('active');
                         sidebarOverlay.classList.remove('active');
                     }

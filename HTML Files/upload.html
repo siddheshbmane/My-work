@@ -260,7 +260,7 @@
                         <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
                             <i class="fas fa-folder-open mr-2"></i>Browse Files
                         </button>
-                        <p class="text-sm text-gray-500 mt-4">Supported formats: CSV, XLSX, XLS (Max 50MB)</p>
+                        <p class="text-sm text-gray-500 mt-4">Supported formats: CSV, XLSX, XLS, JSON (Max 50MB)</p>
                     </div>
 
                     <!-- Selected File Preview -->
@@ -363,7 +363,7 @@
                         <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
                             <i class="fas fa-folder-open mr-2"></i>Browse Files
                         </button>
-                        <p class="text-sm text-gray-500 mt-4">Supported formats: CSV, XLSX, XLS (Max 50MB)</p>
+                        <p class="text-sm text-gray-500 mt-4">Supported formats: CSV, XLSX, XLS, JSON (Max 50MB)</p>
                     </div>
                 </div>
 
@@ -417,7 +417,7 @@
                         <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
                             <i class="fas fa-folder-open mr-2"></i>Browse Files
                         </button>
-                        <p class="text-sm text-gray-500 mt-4">Supported formats: CSV, XLSX, XLS (Max 50MB)</p>
+                        <p class="text-sm text-gray-500 mt-4">Supported formats: CSV, XLSX, XLS, JSON (Max 50MB)</p>
                     </div>
                 </div>
 
@@ -589,11 +589,27 @@
             const sidebar = document.getElementById('sidebar');
             const sidebarToggle = document.getElementById('sidebarToggle');
             const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const mainContent = document.querySelector('main.flex-1');
 
             if (sidebarToggle && sidebar) {
                 sidebarToggle.addEventListener('click', function() {
-                    sidebar.classList.toggle('active');
-                    sidebarOverlay.classList.toggle('active');
+                    // On mobile: toggle slide in/out
+                    if (window.innerWidth < 768) {
+                        sidebar.classList.toggle('active');
+                        sidebarOverlay.classList.toggle('active');
+                    } else {
+                        // On desktop: toggle collapsed state
+                        sidebar.classList.toggle('collapsed');
+
+                        // Adjust main content margin
+                        if (mainContent) {
+                            if (sidebar.classList.contains('collapsed')) {
+                                mainContent.style.marginLeft = '70px';
+                            } else {
+                                mainContent.style.marginLeft = '260px';
+                            }
+                        }
+                    }
                 });
             }
 
@@ -608,7 +624,7 @@
             const navLinks = sidebar.querySelectorAll('.nav-item');
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    if (window.innerWidth < 640) {
+                    if (window.innerWidth < 768) {
                         sidebar.classList.remove('active');
                         sidebarOverlay.classList.remove('active');
                     }
@@ -627,6 +643,9 @@
 
     <!-- Dark Mode Script -->
     <script src="js/dark-mode.js"></script>
+
+    <!-- File Upload Script -->
+    <script src="js/file-upload.js"></script>
 
 </body>
 </html>
