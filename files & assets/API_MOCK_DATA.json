@@ -1,0 +1,383 @@
+{
+  "meta": {
+    "version": "1.0",
+    "generated_at": "2025-11-11T17:00:00Z",
+    "description": "Sample API response data for Lead Analytics Dashboard - Phase 1",
+    "date_range": {
+      "from": "2025-10-12",
+      "to": "2025-11-11"
+    }
+  },
+
+  "master_summary": {
+    "endpoint": "GET /api/reports/master-summary?from=2025-10-12&to=2025-11-11",
+    "response": {
+      "kpis": {
+        "total_spend": 1245000,
+        "total_leads": 847,
+        "qualified_leads": 612,
+        "qualification_rate": 72.3,
+        "average_cpl": 1470,
+        "average_cpql": 2034,
+        "total_revenue": 4567500,
+        "overall_roi": 267
+      },
+      "trends": {
+        "spend_change": 12.5,
+        "leads_change": 8.3,
+        "roi_change": 15.3
+      },
+      "platform_breakdown": {
+        "google_ads": {
+          "spend": 720000,
+          "leads": 465,
+          "qualified": 342,
+          "revenue": 2650000
+        },
+        "meta_ads": {
+          "spend": 525000,
+          "leads": 382,
+          "qualified": 270,
+          "revenue": 1917500
+        }
+      },
+      "clients": [
+        {
+          "client_id": "CLT001",
+          "client_name": "Tech Manufacturing Ltd",
+          "industry": "Manufacturing",
+          "total_spend": 385000,
+          "total_leads": 285,
+          "qualified_leads": 218,
+          "junk_leads": 67,
+          "qualification_rate": 76.5,
+          "cpl": 1351,
+          "cpql": 1766,
+          "revenue": 1540000,
+          "roi": 300,
+          "best_platform": "Google Ads"
+        },
+        {
+          "client_id": "CLT002",
+          "client_name": "EduTech Solutions",
+          "industry": "Education Technology",
+          "total_spend": 245000,
+          "total_leads": 178,
+          "qualified_leads": 125,
+          "junk_leads": 53,
+          "qualification_rate": 70.2,
+          "cpl": 1376,
+          "cpql": 1960,
+          "revenue": 875000,
+          "roi": 257,
+          "best_platform": "Meta Ads"
+        },
+        {
+          "client_id": "CLT003",
+          "client_name": "HealthWellness Clinic",
+          "industry": "Healthcare",
+          "total_spend": 195000,
+          "total_leads": 142,
+          "qualified_leads": 102,
+          "junk_leads": 40,
+          "qualification_rate": 71.8,
+          "cpl": 1373,
+          "cpql": 1912,
+          "revenue": 625000,
+          "roi": 221,
+          "best_platform": "Google Ads"
+        }
+      ],
+      "charts": {
+        "lead_quality_by_platform": {
+          "google_ads": {"qualified": 342, "junk": 123},
+          "meta_ads": {"qualified": 270, "junk": 112}
+        },
+        "qualification_trend": {
+          "dates": ["2025-10-12", "2025-10-15", "2025-10-18", "2025-10-21", "2025-10-24", "2025-10-27", "2025-10-30", "2025-11-02", "2025-11-05", "2025-11-08", "2025-11-11"],
+          "rates": [68, 70, 71, 69, 72, 73, 71, 74, 72, 73, 72.3]
+        }
+      }
+    }
+  },
+
+  "client_deepdive": {
+    "endpoint": "GET /api/reports/client-deepdive/CLT001?from=2025-10-12&to=2025-11-11",
+    "response": {
+      "client": {
+        "client_id": "CLT001",
+        "client_name": "Tech Manufacturing Ltd",
+        "industry": "Manufacturing",
+        "date_created": "2025-01-15",
+        "status": "Active",
+        "logo_url": null
+      },
+      "kpis": {
+        "total_spend": 385000,
+        "spend_breakdown": {
+          "google_ads": 230000,
+          "meta_ads": 155000
+        },
+        "total_leads": 285,
+        "leads_breakdown": {
+          "google_ads": 165,
+          "meta_ads": 120
+        },
+        "qualified_leads": 218,
+        "qualification_rate": 76.5,
+        "revenue": 1540000,
+        "roi": 300,
+        "avg_cpl": 1351,
+        "avg_cpql": 1766,
+        "conversion_rate": 3.95,
+        "best_platform": "Google Ads"
+      },
+      "funnel": {
+        "new": 285,
+        "contacted": 268,
+        "qualified": 218,
+        "converted": 98,
+        "lost": 187
+      },
+      "campaigns": [
+        {
+          "campaign_id": "CMP001",
+          "campaign_name": "Google_Search_Manufacturing_Nov25",
+          "platform": "google",
+          "spend": 145000,
+          "impressions": 55000,
+          "clicks": 2890,
+          "ctr": 5.2,
+          "cpc": 50.17,
+          "leads": 95,
+          "qualified": 72,
+          "qualification_rate": 75.8,
+          "cpl": 1526,
+          "cpql": 2014,
+          "revenue": 620000,
+          "roi": 328,
+          "status": "Active",
+          "adgroups": [
+            {
+              "adgroup_id": "ADG001",
+              "adgroup_name": "Precision Machining Keywords",
+              "spend": 80000,
+              "clicks": 1560,
+              "leads": 52,
+              "qualified": 38,
+              "cpql": 2105
+            },
+            {
+              "adgroup_id": "ADG002",
+              "adgroup_name": "CNC Manufacturing Services",
+              "spend": 65000,
+              "clicks": 1330,
+              "leads": 43,
+              "qualified": 34,
+              "cpql": 1912
+            }
+          ]
+        },
+        {
+          "campaign_id": "CMP002",
+          "campaign_name": "Google_YouTube_TechManuf_Nov25",
+          "platform": "google",
+          "spend": 85000,
+          "impressions": 34000,
+          "clicks": 1420,
+          "ctr": 4.1,
+          "cpc": 59.86,
+          "leads": 70,
+          "qualified": 54,
+          "qualification_rate": 77.1,
+          "cpl": 1214,
+          "cpql": 1574,
+          "revenue": 410000,
+          "roi": 382,
+          "status": "Active"
+        }
+      ]
+    }
+  },
+
+  "upload_response": {
+    "google_ads": {
+      "endpoint": "POST /api/upload/google-ads",
+      "request": {
+        "file": "GoogleAds_TechManufacturing_Nov2025.csv",
+        "client_id": "CLT001"
+      },
+      "response": {
+        "success": true,
+        "message": "Google Ads data uploaded successfully",
+        "summary": {
+          "rows_imported": 1247,
+          "rows_failed": 0,
+          "campaigns_found": 15,
+          "date_range": {
+            "from": "2025-11-01",
+            "to": "2025-11-11"
+          }
+        },
+        "errors": [],
+        "warnings": [
+          {
+            "row": 245,
+            "field": "keyword",
+            "message": "Keyword field empty for display ad, set to N/A"
+          }
+        ]
+      }
+    },
+    "leads": {
+      "endpoint": "POST /api/upload/leads",
+      "request": {
+        "file": "Leads_TechManufacturing_Nov2025.csv",
+        "client_id": "CLT001"
+      },
+      "response": {
+        "success": true,
+        "message": "Lead data uploaded successfully",
+        "summary": {
+          "rows_imported": 285,
+          "rows_failed": 3,
+          "matched_campaigns": 268,
+          "unmatched_campaigns": 17,
+          "custom_fields_detected": ["Budget_Range", "Company_Size", "Timeline"]
+        },
+        "errors": [
+          {
+            "row": 45,
+            "field": "utm_url",
+            "message": "Invalid UTM URL format, could not extract campaign_id"
+          },
+          {
+            "row": 112,
+            "field": "email",
+            "message": "Invalid email format"
+          }
+        ],
+        "custom_fields": [
+          {
+            "field_name": "Budget_Range",
+            "sample_values": ["Low", "Medium", "High"],
+            "unique_values": 3
+          },
+          {
+            "field_name": "Company_Size",
+            "sample_values": ["SMB", "Mid-Market", "Enterprise"],
+            "unique_values": 3
+          }
+        ]
+      }
+    }
+  },
+
+  "platform_comparison": {
+    "endpoint": "GET /api/reports/platform-comparison?from=2025-10-12&to=2025-11-11",
+    "response": {
+      "google_ads": {
+        "total_spend": 720000,
+        "total_impressions": 245000,
+        "total_clicks": 11760,
+        "avg_ctr": 4.8,
+        "avg_cpc": 61.22,
+        "total_leads": 465,
+        "qualified_leads": 342,
+        "qualification_rate": 73.5,
+        "cpl": 1548,
+        "cpql": 2105,
+        "revenue": 2650000,
+        "roi": 268
+      },
+      "meta_ads": {
+        "total_spend": 525000,
+        "total_impressions": 315000,
+        "total_clicks": 11655,
+        "avg_ctr": 3.7,
+        "avg_cpc": 45.05,
+        "total_leads": 382,
+        "qualified_leads": 270,
+        "qualification_rate": 70.7,
+        "cpl": 1374,
+        "cpql": 1944,
+        "revenue": 1917500,
+        "roi": 266
+      },
+      "winner": {
+        "overall": "google",
+        "by_metric": {
+          "cpl": "meta",
+          "cpql": "meta",
+          "qualification_rate": "google",
+          "ctr": "google",
+          "revenue": "google",
+          "roi": "google"
+        }
+      }
+    }
+  },
+
+  "authentication": {
+    "login": {
+      "endpoint": "POST /api/auth/login",
+      "request": {
+        "email": "user@example.com",
+        "password": "securepassword123"
+      },
+      "response": {
+        "success": true,
+        "message": "Login successful",
+        "user": {
+          "user_id": "USR001",
+          "email": "user@example.com",
+          "name": "Agency Manager",
+          "role": "admin",
+          "permissions": ["view_all_clients", "upload_data", "export_reports"]
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "expires_in": 3600
+      }
+    }
+  },
+
+  "error_responses": {
+    "validation_error": {
+      "success": false,
+      "error": {
+        "code": "VALIDATION_ERROR",
+        "message": "Validation failed for uploaded file",
+        "details": [
+          {
+            "row": 5,
+            "field": "date",
+            "value": "2025-13-01",
+            "error": "Invalid date format. Expected YYYY-MM-DD"
+          },
+          {
+            "row": 12,
+            "field": "spend",
+            "value": "-500",
+            "error": "Spend cannot be negative"
+          }
+        ]
+      }
+    },
+    "not_found": {
+      "success": false,
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "Client not found",
+        "details": "Client with ID CLT999 does not exist"
+      }
+    },
+    "unauthorized": {
+      "success": false,
+      "error": {
+        "code": "UNAUTHORIZED",
+        "message": "Authentication required",
+        "details": "Please provide a valid JWT token in the Authorization header"
+      }
+    }
+  }
+}
